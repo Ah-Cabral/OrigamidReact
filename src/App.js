@@ -1,27 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Produto from './Produto';
+import { GlobalStorage } from './GlobalContext';
+import Limpar from './Limpar';
 
 const App = () => {
-  const [cart, setCart] = React.useState(0);
-  const [notify, setNotify] = React.useState(null);
-  const timeoutRef = React.useRef();
-
-  function handleClick(){
-    setCart(cart + 1);
-    setNotify('Você adicionou um item ao carrinho');
-
-    clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(() =>{
-      setNotify(null);
-    }, 2000);
-
-  }
-
   return (
-    <div>
-      <p>{notify}</p>
-      <button onClick={handleClick}>Carrinho {cart}</button>
-    </div>
-  )
-}
+    <GlobalStorage>
+      <Produto />
+      <Limpar />
+    </GlobalStorage>
+  );
+};
 
 export default App;
