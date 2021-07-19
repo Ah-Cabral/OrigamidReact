@@ -1,22 +1,20 @@
 import React from 'react'
-import Header from "./Header";
-import Home from './Home';
-import Produtos from './Produtos';
 
 const App = () => {
-  let Pagina = Home;
-  const {pathname} = window.location;
 
-  if(pathname === '/produtos'){
-    Pagina = Produtos
-  }else{
-    Pagina = Home
+  const [count, setCount] = React.useState(1);
+  const [items, setItems] = React.useState(['Item 1'])
+
+  function handleClick(){
+    setCount((count )=> count + 1)
+    setItems((items)=> [...items, 'Item ' + (count + 1)]);
   }
+
   return (
-    <section>
-      <Header/>
-      <Pagina/>
-    </section>
+    <div>
+      {items.map(item => <li key={item}>{item}</li>)}
+      <button onClick={handleClick}> {count} </button>
+    </div>
   )
 }
 
