@@ -1,5 +1,5 @@
 import React from 'react'
-import Produto from './Produto';
+import Produto from './Produto'
 
 const App = () => {
 
@@ -14,24 +14,13 @@ const App = () => {
 
   //Primeiro de tudo, se é um dado que é modificado, devemos utilizar o useState
 
-  const [data, setData] = React.useState(null);
-  const [load, setLoad] = React.useState(null);
+  const [active, setActive] =  React.useState(0)
 
-  async function handleClick(event){
-    setLoad(true)
-    const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`)
-    const json = await response.json()
-    setData(json)
-    setLoad(false)
-  }
 
   return (
     <div>
-      <button onClick={handleClick} style={{margin: '5px'}}>notebook</button>
-      <button onClick={handleClick} style={{margin: '5px'}}>smartphone</button>
-      <button onClick={handleClick} style={{margin: '5px'}}>tablet</button>
-      {load && <p>Carregando...</p>}
-      {!load && data && <Produto data={data}/>}
+     {active && <Produto/>}
+      <button onClick={() => setActive(!active)}>{active ? 'Ativo' : 'Inativo'}</button>
     </div>
   )
 }

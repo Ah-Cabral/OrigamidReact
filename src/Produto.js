@@ -1,13 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-const Produto = ({ data }) => {
+const Produto = () => {
     return (
-        <div>
-            <h1>{data.nome}</h1>
-            <h2>R${data.preco}</h2>
-            <img src={data.fotos[0].src} alt='imagem'></img>
+        <div style={{height: '200vh'}}>
+            Meu Produto
         </div>
-    );
-};
+    )
+}
 
-export default Produto;
+export default Produto
